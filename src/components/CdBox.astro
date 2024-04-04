@@ -1,0 +1,16 @@
+---
+interface Props {
+	title: string;
+	body: string;
+    img: string;
+}
+
+const { img, title, body } = Astro.props;
+import '../styles/global.css'
+---
+
+<div class="CD-card">
+        <img src={img} alt=""/>
+		<h2> {title} </h2>
+		<p> {body} </p>
+</div>

@@ -1,0 +1,31 @@
+:root {
+    --gap: 12px;
+    --columns: 12
+  }
+
+html {
+    font-family: system-ui, sans-serif;
+    background: black;
+    background-size: 224px;
+}
+
+.content-container{
+    display: grid;
+    grid-template-columns: repeat(var(--columns), calc((100% - (var(--columns) - 1) * var(--gap)) / var(--columns)));
+    gap: var(--gap);
+    margin-inline: 12px;
+}
+
+h1 {
+    font-size: 4rem;
+    font-weight: 700;
+    line-height: 1;
+    margin-bottom: 1em;
+    color: white;
+}
+
+.CD-card {
+    border: 1px solid white;
+    color: white;
+    grid-column: span 3;
+}
