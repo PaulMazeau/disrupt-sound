@@ -4,29 +4,29 @@ import Layout from '../layouts/Layout.astro';
 import '../styles/global.css'
 
 const cds = [
-  { img: '/images/img01.webp', title: 'Titre 1', body: 'Description 1' },
-  { img: '/images/img02.webp', title: 'Titre 2', body: 'Description 2' },
-  { img: '/images/img03.webp', title: 'Titre 2', body: 'Description 2' },
-  { img: '/images/img04.webp', title: 'Titre 2', body: 'Description 2' },
-  { img: '/images/img05.webp', title: 'Titre 2', body: 'Description 2' },
-  { img: '/images/img06.webp', title: 'Titre 2', body: 'Description 2' },
-  { img: '/images/img07.webp', title: 'Titre 2', body: 'Description 2' },
-  { img: '/images/img08.webp', title: 'Titre 2', body: 'Description 2' },
-  { img: '/images/img09.webp', title: 'Titre 2', body: 'Description 2' },
-  { img: '/images/img10.webp', title: 'Titre 2', body: 'Description 2' },
-  { img: '/images/img11.webp', title: 'Titre 2', body: 'Description 2' },
-  { img: '/images/img12.webp', title: 'Titre 2', body: 'Description 2' },
-  { img: '/images/img13.webp', title: 'Titre 13', body: 'Description 13' },
+  { img: '/images/img01.webp', title: 'Titre 1', body: 'Description 1', mp3: '/sounds/sound01.mp3'},
+  { img: '/images/img02.webp', title: 'Titre 2', body: 'Description 2', mp3: '/sounds/sound01.mp3' },
+  { img: '/images/img03.webp', title: 'Titre 2', body: 'Description 2', mp3: '/sounds/sound01.mp3' },
+  { img: '/images/img04.webp', title: 'Titre 2', body: 'Description 2', mp3: '/sounds/sound01.mp3' },
+  { img: '/images/img05.webp', title: 'Titre 2', body: 'Description 2', mp3: '/sounds/sound01.mp3' },
+  { img: '/images/img06.webp', title: 'Titre 2', body: 'Description 2', mp3: '/sounds/sound01.mp3' },
+  { img: '/images/img07.webp', title: 'Titre 2', body: 'Description 2', mp3: '/sounds/sound01.mp3' },
+  { img: '/images/img08.webp', title: 'Titre 2', body: 'Description 2', mp3: '/sounds/sound01.mp3' },
+  { img: '/images/img09.webp', title: 'Titre 2', body: 'Description 2', mp3: '/sounds/sound01.mp3' },
+  { img: '/images/img10.webp', title: 'Titre 2', body: 'Description 2', mp3: '/sounds/sound01.mp3' },
+  { img: '/images/img11.webp', title: 'Titre 2', body: 'Description 2', mp3: '/sounds/sound01.mp3' },
+  { img: '/images/img12.webp', title: 'Titre 2', body: 'Description 2', mp3: '/sounds/sound01.mp3' },
+  { img: '/images/img13.webp', title: 'Titre 13', body: 'Description 13', mp3: '/sounds/sound01.mp3' },
 ];
 ---
 
 <Layout title="Disrupt sound">
   <div class="presentation-container">
-    <p class="presentation">DISRUPT est un collectif de producteur Parisiens composé de Tenma, C0UTURE, Horaze et Lewis Amber. </p>
+    <p class="presentation">DISRUPT est un collectif de producteur Parisiens composé de Tenma, C0UTURE, Horaze et Lewis Amber. Leur objectif est de se faire un max de blé en vendant des prods sur youtube.</p>
   </div>
 	<div class="content-container">
 		{cds.map(cd => (
-		  <CdBox img={cd.img} title={cd.title} body={cd.body}/>
+		  <CdBox img={cd.img} title={cd.title} body={cd.body} mp3={cd.mp3}/>
 		))}
 	</div>
 </Layout>

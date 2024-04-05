@@ -3,60 +3,74 @@ interface Props {
 	title: string;
 	body: string;
     img: string;
+    mp3: string;
 }
 
-const { img, title, body } = Astro.props;
+const { img, title, body, mp3 } = Astro.props;
 import '../styles/global.css'
 ---
 
-<div class="CD-card">
-	<div class="img-container">
-        <img src={img} alt="" class="cd-img"/>
-	</div>
-	<div class="text-container">
-		<h2> {title} </h2>
-		<p> {body} </p>
-	</div>
-</div>
+<div class="CD-card" data-mp3={mp3}>
+    <div class="img-container">
+      <img src={img} alt="" class="cd-img"/>
+    </div>
+    <div class="text-container">
+      <h2>{title}</h2>
+      <p>{body}</p>
+    </div>
+  </div>
 
 <script>
 	import { gsap } from "gsap";
-	
-	document.querySelectorAll('.CD-card').forEach(card => {
-    const img = card.querySelector('.cd-img');
-    const textElements = card.querySelectorAll('.text-container h2, .text-container p');
-    let tween; // Variable pour stocker l'instance d'animation GSAP de l'image
 
-    // Animation au survol pour l'image
-    card.addEventListener('mouseenter', () => {
-        tween = gsap.to(img, {
-            rotation: "+=360",
-            ease: "none",
-            duration: 3,
-            repeat: -1
-        });
-        textElements.forEach(text => {
-            gsap.from(text, {
-                y: 200, // Départ de 200px à gauche
-                autoAlpha: 0, // Commence invisible
-                ease: "power2.out", // Utilise une accélération pour un effet plus doux
-                duration: 0.8 // Durée plus courte pour une révélation rapide
-            });
-        });
+  document.querySelectorAll('.CD-card').forEach(cardElement => {
+  const card = cardElement as HTMLElement;  
+  const img = card.querySelector('.cd-img') as HTMLImageElement;
+  const h2 = card.querySelector('.text-container h2') as HTMLElement;
+  const p = card.querySelector('.text-container p') as HTMLElement; 
+  const audioUrl = card.dataset.mp3;  
+  const audio = new Audio(audioUrl); 
+  let tween;
+
+  card.addEventListener('mouseenter', () => {
+    tween = gsap.to(img, {
+      rotation: "+=360",
+      ease: "none",
+      duration: 3,
+      repeat: -1
     });
 
-    // Arrêt des animations de l'image et réinitialisation des textes au survol
-    card.addEventListener('mouseleave', () => {
-        tween.pause(); // Pause l'animation de l'image
-        textElements.forEach(text => {
-            gsap.to(text, {
-                y: 0, // Retour à la position initiale
-                autoAlpha: 1, // Rendre complètement visible
-                ease: "power2.in", // Utilise une décélération
-                duration: 0.5 // Durée pour retourner à l'état normal
-            });
-        });
+    gsap.from(h2, {
+      y: 50, 
+      autoAlpha: 0, 
+      ease: "power2.out",
+      duration: 0.8,
+      delay: 0 
     });
+
+    gsap.from(p, {
+      y: 50, 
+      autoAlpha: 0, 
+      ease: "power2.out",
+      duration: 0.8,
+      delay: 0.1
+    });
+
+    audio.play();
+  });
+
+  card.addEventListener('mouseleave', () => {
+    tween.pause();
+    gsap.to([h2, p], {
+      y: 0, 
+      autoAlpha: 1,
+      ease: "power2.in", 
+      duration: 0.5
+    });
+    audio.pause(); 
+    audio.currentTime = 0; 
+  });
 });
+
 
 </script>

@@ -61,6 +61,7 @@ h1 {
 
 .text-container h2, .text-container p {
     visibility: hidden; /* Masque les éléments */
+    margin-bottom: 20px;
 }
 
 
@@ -68,5 +69,5 @@ h1 {
     color: white;
     margin-inline-start: 12px;
     margin-bottom: 40px;
-    grid-column: span 4;
+    grid-column: span 5;
 }
