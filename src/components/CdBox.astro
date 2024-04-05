@@ -18,3 +18,45 @@ import '../styles/global.css'
 		<p> {body} </p>
 	</div>
 </div>
+
+<script>
+	import { gsap } from "gsap";
+	
+	document.querySelectorAll('.CD-card').forEach(card => {
+    const img = card.querySelector('.cd-img');
+    const textElements = card.querySelectorAll('.text-container h2, .text-container p');
+    let tween; // Variable pour stocker l'instance d'animation GSAP de l'image
+
+    // Animation au survol pour l'image
+    card.addEventListener('mouseenter', () => {
+        tween = gsap.to(img, {
+            rotation: "+=360",
+            ease: "none",
+            duration: 3,
+            repeat: -1
+        });
+        textElements.forEach(text => {
+            gsap.from(text, {
+                y: 200, // Départ de 200px à gauche
+                autoAlpha: 0, // Commence invisible
+                ease: "power2.out", // Utilise une accélération pour un effet plus doux
+                duration: 0.8 // Durée plus courte pour une révélation rapide
+            });
+        });
+    });
+
+    // Arrêt des animations de l'image et réinitialisation des textes au survol
+    card.addEventListener('mouseleave', () => {
+        tween.pause(); // Pause l'animation de l'image
+        textElements.forEach(text => {
+            gsap.to(text, {
+                y: 0, // Retour à la position initiale
+                autoAlpha: 1, // Rendre complètement visible
+                ease: "power2.in", // Utilise une décélération
+                duration: 0.5 // Durée pour retourner à l'état normal
+            });
+        });
+    });
+});
+
+</script>

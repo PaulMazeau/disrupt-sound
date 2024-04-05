@@ -9,6 +9,13 @@ html {
     background-size: 224px;
 }
 
+.presentation-container{
+    display: grid;
+    grid-template-columns: repeat(var(--columns), calc((100% - (var(--columns) - 1) * var(--gap)) / var(--columns)));
+    gap: var(--gap);
+    margin-inline: 12px;
+}
+
 .content-container{
     display: grid;
     grid-template-columns: repeat(var(--columns), calc((100% - (var(--columns) - 1) * var(--gap)) / var(--columns)));
@@ -21,6 +28,7 @@ h1 {
     font-weight: 700;
     line-height: 1;
     color: white;
+    margin-inline: 12px;
 }
 
 .CD-card {
@@ -28,6 +36,7 @@ h1 {
     color: white;
     grid-column: span 3;
     aspect-ratio: 1/1;
+    overflow: hidden;
 }
 
 .CD-card:after {
@@ -48,4 +57,16 @@ h1 {
 
 .text-container {
     padding-left: 20px;
+}
+
+.text-container h2, .text-container p {
+    visibility: hidden; /* Masque les éléments */
+}
+
+
+.presentation {
+    color: white;
+    margin-inline-start: 12px;
+    margin-bottom: 40px;
+    grid-column: span 4;
 }
