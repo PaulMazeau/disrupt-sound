@@ -2,14 +2,29 @@
 import CdBox from '../components/CdBox.astro';
 import Layout from '../layouts/Layout.astro';
 import '../styles/global.css'
+
+const cds = [
+  { img: '/images/img01.webp', title: 'Titre 1', body: 'Description 1' },
+  { img: '/images/img02.webp', title: 'Titre 2', body: 'Description 2' },
+  { img: '/images/img03.webp', title: 'Titre 2', body: 'Description 2' },
+  { img: '/images/img04.webp', title: 'Titre 2', body: 'Description 2' },
+  { img: '/images/img05.webp', title: 'Titre 2', body: 'Description 2' },
+  { img: '/images/img06.webp', title: 'Titre 2', body: 'Description 2' },
+  { img: '/images/img07.webp', title: 'Titre 2', body: 'Description 2' },
+  { img: '/images/img08.webp', title: 'Titre 2', body: 'Description 2' },
+  { img: '/images/img09.webp', title: 'Titre 2', body: 'Description 2' },
+  { img: '/images/img10.webp', title: 'Titre 2', body: 'Description 2' },
+  { img: '/images/img11.webp', title: 'Titre 2', body: 'Description 2' },
+  { img: '/images/img12.webp', title: 'Titre 2', body: 'Description 2' },
+  { img: '/images/img13.webp', title: 'Titre 13', body: 'Description 13' },
+];
 ---
 
-<Layout title="Welcome to Astro.">
+<Layout title="Disrupt sound">
 	<h1>Disrupt sound</h1>
 	<div class="content-container">
-	<CdBox img='caca' title='Bouteille Bleu' body='120 BPM'/>
-	<CdBox img='caca' title='Bouteille Bleu' body='120 BPM'/>
-	<CdBox img='caca' title='Bouteille Bleu' body='120 BPM'/>
-	<CdBox img='caca' title='Bouteille Bleu' body='120 BPM'/>
+		{cds.map(cd => (
+		  <CdBox img={cd.img} title={cd.title} body={cd.body}/>
+		))}
 	</div>
 </Layout>
