@@ -35,7 +35,6 @@ h1 {
     border: 1px solid white;
     color: white;
     grid-column: span 3;
-    aspect-ratio: 1/1;
     overflow: hidden;
 }
 
@@ -70,4 +69,16 @@ h1 {
     margin-inline-start: 12px;
     margin-bottom: 40px;
     grid-column: span 5;
+}
+
+@media (max-width: 500px) {
+    .CD-card {
+        grid-column: span 12;
+    }
+    .presentation {
+        grid-column: span 12;
+    }
+    .text-container h2, .text-container p {
+        visibility: visible; /* Rend les éléments visibles */
+    }
 }
